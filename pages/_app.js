@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-import '../styles/globals.scss';
+import '../assets/styles/globals.scss';
 
-function MyApp({ Component, pageProps }) {
+const MyApp = ({ Component, pageProps }) => {
     return <Component {...pageProps} />;
-}
+};
 
 export default MyApp;
