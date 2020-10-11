@@ -6,11 +6,16 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "format": "prettier --write **/*.js{,x}",
-        "lint": "eslint --fix **/*.js{,x}"
+        "format": "prettier --write **/*.ts{,x}",
+        "lint": "eslint --fix **/*.ts{,x}",
+        "gen": "graphql-codegen --config codegen.yml -r dotenv/config"
     },
     "dependencies": {
+        "@apollo/react-hooks": "^4.0.0",
+        "apollo-boost": "^0.4.9",
         "classnames": "^2.2.6",
+        "dotenv": "^8.2.0",
+        "graphql": "^15.3.0",
         "next": "9.5.3",
         "next-images": "^1.5.0",
         "react": "16.13.1",
@@ -18,14 +23,23 @@
         "sass": "^1.26.11"
     },
     "devDependencies": {
-        "eslint": "^7.10.0",
+        "@graphql-codegen/cli": "1.17.10",
+        "@graphql-codegen/typescript": "1.17.10",
+        "@graphql-codegen/typescript-operations": "1.17.8",
+        "@graphql-codegen/typescript-react-apollo": "2.0.7",
+        "@types/graphql": "^14.5.0",
+        "@types/node": "^14.11.8",
+        "@types/react": "^16.9.52",
+        "@typescript-eslint/eslint-plugin": "^4.4.0",
+        "@typescript-eslint/parser": "^4.4.0",
+        "eslint": "^7.11.0",
         "eslint-config-airbnb": "^18.2.0",
         "eslint-config-prettier": "^6.12.0",
-        "eslint-plugin-import": "^2.22.0",
+        "eslint-plugin-import": "^2.22.1",
         "eslint-plugin-jsx-a11y": "^6.3.1",
         "eslint-plugin-prettier": "^3.1.4",
-        "eslint-plugin-react": "^7.21.2",
-        "eslint-plugin-react-hooks": "^4.1.2",
-        "prettier": "^2.1.2"
+        "eslint-plugin-react": "^7.21.4",
+        "prettier": "^2.1.2",
+        "typescript": "^4.0.3"
     }
 }
