@@ -10,9 +10,9 @@ class MyDocument extends Document {
                         href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap"
                         rel="stylesheet"
                     />
-                    <link rel="icon" href="/favicon.ico" />
                     <meta charSet="utf-8" />
                     <meta name="theme-color" content="#000000" />
+                    <link rel="icon" href="../public/favicon.ico" />
                 </Head>
                 <body>
                     <Main />

@@ -71,6 +71,14 @@ export type LoginMutation = (
   ) }
 );
 
+export type ProtectedQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ProtectedQuery = (
+  { __typename?: 'Query' }
+  & Pick<Query, 'protected'>
+);
+
 export type RegisterMutationVariables = Exact<{
   name: Scalars['String'];
   email: Scalars['String'];
@@ -147,6 +155,36 @@ export function useLoginMutation(baseOptions?: Apollo.MutationHookOptions<LoginM
 export type LoginMutationHookResult = ReturnType<typeof useLoginMutation>;
 export type LoginMutationResult = Apollo.MutationResult<LoginMutation>;
 export type LoginMutationOptions = Apollo.BaseMutationOptions<LoginMutation, LoginMutationVariables>;
+export const ProtectedDocument = gql`
+    query Protected {
+  protected
+}
+    `;
+
+/**
+ * __useProtectedQuery__
+ *
+ * To run a query within a React component, call `useProtectedQuery` and pass it any options that fit your needs.
+ * When your component renders, `useProtectedQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useProtectedQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useProtectedQuery(baseOptions?: Apollo.QueryHookOptions<ProtectedQuery, ProtectedQueryVariables>) {
+        return Apollo.useQuery<ProtectedQuery, ProtectedQueryVariables>(ProtectedDocument, baseOptions);
+      }
+export function useProtectedLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ProtectedQuery, ProtectedQueryVariables>) {
+          return Apollo.useLazyQuery<ProtectedQuery, ProtectedQueryVariables>(ProtectedDocument, baseOptions);
+        }
+export type ProtectedQueryHookResult = ReturnType<typeof useProtectedQuery>;
+export type ProtectedLazyQueryHookResult = ReturnType<typeof useProtectedLazyQuery>;
+export type ProtectedQueryResult = Apollo.QueryResult<ProtectedQuery, ProtectedQueryVariables>;
 export const RegisterDocument = gql`
     mutation Register($name: String!, $email: String!, $password: String!) {
   register(name: $name, email: $email, password: $password)

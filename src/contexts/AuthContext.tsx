@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { createContext, useState, useEffect } from 'react';
-import { get } from 'js-cookie';
+import { createContext, useState } from 'react';
 
 // Interfaces
 import { IAuthContext } from '../types/ContextProps';
@@ -8,14 +7,13 @@ import { User } from '../types/EntityTypes';
 
 // GraphQL hooks
 import { useLoginMutation } from '../types/graphql';
+import { setToken } from '../utils/token';
 
 export const AuthContext = createContext({} as IAuthContext);
 
 const AuthProvider: React.FC = ({ children }) => {
     // Global States
     const [logged, setLogged] = useState(false);
-    const [user, setUser] = useState<User>(undefined);
-    const [accessToken, setAccesToken] = useState<string>(undefined);
 
     // API Hooks
     const [auth] = useLoginMutation();
@@ -28,7 +26,8 @@ const AuthProvider: React.FC = ({ children }) => {
             },
         })
             .then((resp) => {
-                setAccesToken(resp.data.auth.accessToken);
+                setToken(resp.data.auth.accessToken);
+                setLogged(true);
                 return resp.data.auth;
             })
             .catch((error) => error.message);
@@ -36,19 +35,8 @@ const AuthProvider: React.FC = ({ children }) => {
         return res;
     };
 
-    const checkToken = () => {
-        const cookie = get('redisc');
-
-        if (!cookie) return;
-
-        setLogged(true);
-    };
-
     const providerValue = {
-        user,
-        accessToken,
         login,
-        checkToken,
         logged,
     };
 
