@@ -11,7 +11,8 @@ function createApolloClient() {
         ssrMode: typeof window === 'undefined',
         link: new HttpLink({
             uri: 'http://localhost:3030/api/v1/graphql',
-            credentials: 'same-origin',
+            credentials: 'include',
+            // credentials: 'same-origin',
         }),
         cache: new InMemoryCache({
             typePolicies: {

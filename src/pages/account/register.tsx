@@ -12,7 +12,7 @@ import { useRegisterMutation } from '../../types/graphql';
 // Interfaces
 import { UserFormData } from '../../types/FormTypes';
 
-const Home: React.FC = () => {
+const Register: React.FC = () => {
     const [data, setData] = useState<UserFormData>({
         name: '',
         email: '',
@@ -20,6 +20,8 @@ const Home: React.FC = () => {
     });
 
     const [register] = useRegisterMutation();
+
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleChange = (e: React.ChangeEvent<HTMLFormElement>) => {
         const { name, value } = e.target;
@@ -36,9 +38,14 @@ const Home: React.FC = () => {
                 password: data.password,
             },
         })
-            .then(() => {
-                alert(`Form Submitted!`);
-                Router.push('/');
+            .then((res) => {
+                if (res.data.register === true) {
+                    alert(`Form Submitted!`);
+                    Router.push('/');
+                }
+                setErrorMessage(
+                    'This e-mail is already associated with an registered account',
+                );
             })
             .catch((error) => console.error(error));
     };
@@ -50,9 +57,10 @@ const Home: React.FC = () => {
             </Link>
             <div>
                 <RegisterForm onChange={handleChange} onSubmit={handleSubmit} />
+                {errorMessage && <p>{errorMessage}</p>}
             </div>
         </div>
     );
 };
 
-export default Home;
+export default Register;

@@ -7,15 +7,14 @@ import Button from '../../elements/Button';
 // Interfaces
 import { BasicFormProps } from '../../../types/LayoutProps';
 
-const RegisterForm: React.FC<BasicFormProps> = ({ onChange, onSubmit }) => {
+const LoginForm: React.FC<BasicFormProps> = ({ onChange, onSubmit }) => {
     return (
         <form onChange={onChange} onSubmit={onSubmit} className="form">
-            <Input label="Name" type="text" name="name" />
             <Input label="Email" type="email" name="email" />
             <Input label="Password" type="password" name="password" />
-            <Button type="submit">Submit</Button>
+            <Button type="submit">Login</Button>
         </form>
     );
 };
 
-export default RegisterForm;
+export default LoginForm;

@@ -5,6 +5,6 @@ export interface InputProps {
 }
 
 export interface ButtonProps {
-    type: 'submit' | 'button';
+    type: string;
     children: React.ReactNode;
 }
