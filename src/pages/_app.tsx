@@ -4,6 +4,11 @@ import { AppProps } from 'next/app';
 import { ApolloProvider } from '@apollo/react-hooks';
 
 import '../assets/styles/globals.scss';
+
+// Contexts
+import AuthProvider from '../contexts/AuthContext';
+
+// Apollo Starter
 import { useApollo } from '../lib/apolloClient';
 
 // Components
@@ -22,14 +27,16 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
                     content="width=device-width, initial-scale=1"
                 />
                 <title>Redisc - The right place for nostalgia!</title>
-                <link rel="icon" href="/favicon.ico" />
+                <link rel="icon" href="../public/favicon.ico" />
             </Head>
             <ApolloProvider client={apolloClient}>
-                <Header />
-                <App>
-                    <Component {...pageProps} />
-                </App>
-                <Footer />
+                <AuthProvider>
+                    <Header />
+                    <App>
+                        <Component {...pageProps} />
+                    </App>
+                    <Footer />
+                </AuthProvider>
             </ApolloProvider>
         </>
     );

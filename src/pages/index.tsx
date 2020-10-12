@@ -1,8 +1,11 @@
 import * as React from 'react';
+import { useContext } from 'react';
 import Link from 'next/link';
 import { useHelloQuery } from '../types/graphql';
+import { AuthContext } from '../contexts/AuthContext';
 
 const Home: React.FC = () => {
+    const { logged } = useContext(AuthContext);
     const { data, loading } = useHelloQuery();
 
     if (loading || !data) {
@@ -11,6 +14,7 @@ const Home: React.FC = () => {
 
     return (
         <div>
+            {logged && <p>You are Logged!</p>}
             <h2>{data.hello}</h2>
             <Link as="/account/register" href="/account/register">
                 Create an Account

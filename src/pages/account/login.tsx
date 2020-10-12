@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import Link from 'next/link';
 import Router from 'next/router';
 
@@ -9,18 +9,18 @@ import LoginForm from '../../components/layouts/partials/LoginForm';
 // Interfaces
 import { UserFormData } from '../../types/FormTypes';
 
-// Mutations
-import { useLoginMutation } from '../../types/graphql';
+// Context
+import { AuthContext } from '../../contexts/AuthContext';
 
 const Login: React.FC = () => {
+    const { login } = useContext(AuthContext);
+
     const [data, setData] = useState<UserFormData>({
         email: '',
         password: '',
     });
 
-    const [errorMessage, setErrorMessage] = useState();
-
-    const [auth] = useLoginMutation();
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleChange = (e: React.ChangeEvent<HTMLFormElement>) => {
         const { name, value } = e.target;
@@ -30,20 +30,12 @@ const Login: React.FC = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        await auth({
-            variables: {
-                email: data.email,
-                password: data.password,
-            },
-        })
-            .then(() => {
-                alert(`Successfully Logged In!`);
-                Router.push('/');
-            })
-            .catch((error) => {
-                console.error(error);
-                setErrorMessage(error.message);
-            });
+        const res = await login(data);
+
+        if (typeof res === 'string') return setErrorMessage(res);
+
+        alert(`Successfully Logged In!`);
+        return Router.push('/');
     };
 
     return (
