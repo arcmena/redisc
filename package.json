@@ -11,6 +11,7 @@
         "gen": "graphql-codegen --config codegen.yml -r dotenv/config"
     },
     "dependencies": {
+        "@apollo/client": "^3.2.3",
         "@apollo/react-hooks": "^4.0.0",
         "apollo-boost": "^0.4.9",
         "classnames": "^2.2.6",
@@ -39,6 +40,7 @@
         "eslint-plugin-jsx-a11y": "^6.3.1",
         "eslint-plugin-prettier": "^3.1.4",
         "eslint-plugin-react": "^7.21.4",
+        "husky": "^4.3.0",
         "prettier": "^2.1.2",
         "typescript": "^4.0.3"
     }

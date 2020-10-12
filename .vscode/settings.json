@@ -10,9 +10,10 @@
         "tsconfig.json": true,
         "codegen.yml": true,
         "next-env.d.ts": true,
+        "next.config.js": true,
 
         // Folders
         ".next": true,
-        "node_modules": true,
+        "node_modules": true
     }
 }

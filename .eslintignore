@@ -2,3 +2,4 @@ node_modules
 .next
 /*.js
 types/graphql.tsx
+next-env.d.ts

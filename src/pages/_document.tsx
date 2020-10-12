@@ -2,7 +2,7 @@ import * as React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 class MyDocument extends Document {
-    render() {
+    render(): JSX.Element {
         return (
             <Html>
                 <Head>
@@ -12,7 +12,7 @@ class MyDocument extends Document {
                     />
                     <link rel="icon" href="/favicon.ico" />
                     <meta charSet="utf-8" />
-                    <meta name="theme-color" content="#000000" />
+                    <meta name="theme-color" content="#303030" />
                 </Head>
                 <body>
                     <Main />
