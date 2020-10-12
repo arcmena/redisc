@@ -1,9 +1,6 @@
 import * as React from 'react';
-import Head from 'next/head';
+import Link from 'next/link';
 import { useHelloQuery } from '../types/graphql';
-import App from '../components/layouts/App';
-import Header from '../components/layouts/Header';
-import Footer from '../components/layouts/Footer';
 
 const Home: React.FC = () => {
     const { data, loading } = useHelloQuery();
@@ -14,14 +11,16 @@ const Home: React.FC = () => {
 
     return (
         <div>
-            <Head>
-                <title>Redisc</title>
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
+            <h2>{data.hello}</h2>
+            <Link as="/account/register" href="/account/register">
+                Create an Account
+            </Link>
 
-            <Header />
-            <App>{data.hello}</App>
-            <Footer />
+            <br />
+
+            <Link as="/account/login" href="/account/login">
+                Login
+            </Link>
         </div>
     );
 };
