@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { useProtectedQuery } from '../../../types/graphql';
+
+import { useProtectedQuery } from '../../../lib/protected.graphql';
 
 const ProtectedRoute = () => {
     const { data, loading, error } = useProtectedQuery();

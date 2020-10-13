@@ -2,18 +2,18 @@
     "editor.formatOnSave": true,
     "files.exclude": {
         // Files
-        ".eslintrc": true,
-        ".eslintignore": true,
-        ".prettierrc": true,
-        ".prettierignore": true,
-        ".huskyrc": true,
-        "tsconfig.json": true,
-        "codegen.yml": true,
-        "next-env.d.ts": true,
-        "next.config.js": true,
+        // ".eslintrc": true,
+        // ".eslintignore": true,
+        // ".prettierrc": true,
+        // ".prettierignore": true,
+        // ".huskyrc": true,
+        // "tsconfig.json": true,
+        // "codegen.yml": true,
+        // "next-env.d.ts": true,
+        // "next.config.js": true,
 
         // Folders
-        ".next": true,
+        // ".next": true,
         "node_modules": true
     }
 }

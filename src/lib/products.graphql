@@ -1,0 +1,8 @@
+query Products {
+    products {
+        _id
+        name
+        value
+        image
+    }
+}

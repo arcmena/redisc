@@ -1,0 +1,10 @@
+query Product($id: String!) {
+    product(id: $id) {
+        _id
+        name
+        description
+        value
+        category
+        image
+    }
+}

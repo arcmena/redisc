@@ -6,7 +6,8 @@ import { IAuthContext } from '../types/ContextProps';
 import { User } from '../types/EntityTypes';
 
 // GraphQL hooks
-import { useLoginMutation } from '../types/graphql';
+import { useLoginMutation } from '../lib/login.graphql';
+
 import { setToken } from '../utils/token';
 
 export const AuthContext = createContext({} as IAuthContext);
@@ -15,7 +16,6 @@ const AuthProvider: React.FC = ({ children }) => {
     // Global States
     const [logged, setLogged] = useState(false);
 
-    // API Hooks
     const [auth] = useLoginMutation();
 
     const login = async (data: User) => {

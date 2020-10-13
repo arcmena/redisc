@@ -3,12 +3,13 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "dev": "next dev",
-        "build": "next build",
+        "dev": "yarn codegen && next dev",
+        "build": "yarn codegen && next build",
         "start": "next start",
         "format": "prettier --write **/*.ts{,x}",
         "lint": "eslint --fix **/*.ts{,x}",
-        "gen": "graphql-codegen --config codegen.yml -r dotenv/config"
+        "codegen": "graphql-let",
+        "test": "yarn codegen && jest"
     },
     "dependencies": {
         "@apollo/client": "^3.2.3",
@@ -16,6 +17,7 @@
         "apollo-boost": "^0.4.9",
         "classnames": "^2.2.6",
         "graphql": "^15.3.0",
+        "graphql-request": "^3.1.0",
         "next": "9.5.3",
         "next-images": "^1.5.0",
         "react": "16.13.1",
@@ -24,15 +26,20 @@
     },
     "devDependencies": {
         "@graphql-codegen/cli": "1.17.10",
+        "@graphql-codegen/plugin-helpers": "^1.17.8",
         "@graphql-codegen/typescript": "1.17.10",
         "@graphql-codegen/typescript-operations": "1.17.8",
         "@graphql-codegen/typescript-react-apollo": "2.0.7",
+        "@graphql-codegen/typescript-resolvers": "^1.17.8",
         "@types/graphql": "^14.5.0",
         "@types/js-cookie": "^2.2.6",
         "@types/node": "^14.11.8",
         "@types/react": "^16.9.52",
+        "@types/react-dom": "^16.9.8",
+        "@types/react-test-renderer": "16.9.3",
         "@typescript-eslint/eslint-plugin": "^4.4.0",
         "@typescript-eslint/parser": "^4.4.0",
+        "babel-jest": "26.3.0",
         "eslint": "^7.11.0",
         "eslint-config-airbnb": "^18.2.0",
         "eslint-config-prettier": "^6.12.0",
@@ -40,8 +47,13 @@
         "eslint-plugin-jsx-a11y": "^6.3.1",
         "eslint-plugin-prettier": "^3.1.4",
         "eslint-plugin-react": "^7.21.4",
+        "graphql-let": "^0.16.2",
+        "graphql-tag": "2.11.0",
         "husky": "^4.3.0",
+        "jest": "26.4.0",
         "prettier": "^2.1.2",
-        "typescript": "^4.0.3"
+        "react-test-renderer": "16.13.1",
+        "typescript": "^3.9.7",
+        "yaml-loader": "0.6.0"
     }
 }
