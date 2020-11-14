@@ -25,11 +25,11 @@ function create(initialState, { fetchOptions }) {
     });
 
     const authLink = setContext((_, { headers }) => {
-        const token = Cookies.get('token');
+        const token = Cookies.get('disker');
         return {
             headers: {
                 ...headers,
-                authorization: token ? `Bearer ${token}` : '',
+                Authorization: token ? `Bearer ${token}` : '',
             },
         };
     });

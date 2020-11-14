@@ -1,16 +1,20 @@
+/* eslint-disable no-return-await */
 /* eslint-disable import/prefer-default-export */
-import { setToken } from './token';
+import Axios from 'axios';
 
-export const refreshToken = () => {
-    const response = fetch('http://localhost:3030/api/v1/refresh_token', {
-        method: 'POST',
-        credentials: 'include',
-    })
-        .then(async (res) => {
-            const token = await res.json();
-            setToken(token.accessToken);
-        })
-        .catch((error) => console.error(error));
+// Response Types
+import { Token } from '../types/ResponseTypes';
 
-    return response;
+const api = Axios.create({
+    baseURL: process.env.BACKEND_API_URL,
+    withCredentials: true,
+});
+
+export const refreshToken = async (): Promise<Token> => {
+    return await api
+        .post('/refresh_token')
+        .then(({ data }) => data)
+        .catch((error) => {
+            throw new Error(error);
+        });
 };

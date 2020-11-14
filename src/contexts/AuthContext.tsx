@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { createContext, useState } from 'react';
+import Cookies from 'js-cookie';
 
 // Interfaces
 import { IAuthContext } from '../types/ContextProps';
@@ -7,8 +8,7 @@ import { User } from '../types/EntityTypes';
 
 // GraphQL hooks
 import { useLoginMutation } from '../lib/login.graphql';
-
-import { setToken } from '../utils/token';
+import { refreshToken } from '../utils/api';
 
 export const AuthContext = createContext({} as IAuthContext);
 
@@ -26,7 +26,6 @@ const AuthProvider: React.FC = ({ children }) => {
             },
         })
             .then((resp) => {
-                setToken(resp.data.auth.accessToken);
                 setLogged(true);
                 return resp.data.auth;
             })
@@ -35,22 +34,23 @@ const AuthProvider: React.FC = ({ children }) => {
         return res;
     };
 
-    const refreshToken = () => {
-        fetch('http://localhost:3030/api/v1/refresh_token', {
-            method: 'POST',
-            credentials: 'include',
-        })
-            .then(async (res) => {
-                const token = await res.json();
-                setToken(token.accessToken);
-            })
-            .catch((error) => console.error(error));
+    const validateToken = async (): Promise<void> => {
+        try {
+            const token = await refreshToken();
+            if (token.accessToken !== '') {
+                Cookies.set('disker', token.accessToken);
+                return setLogged(true);
+            }
+            return setLogged(false);
+        } catch (error) {
+            throw new Error(error);
+        }
     };
 
     const providerValue = {
         login,
         logged,
-        refreshToken,
+        validateToken,
     };
 
     return (
