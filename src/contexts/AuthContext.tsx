@@ -35,9 +35,22 @@ const AuthProvider: React.FC = ({ children }) => {
         return res;
     };
 
+    const refreshToken = () => {
+        fetch('http://localhost:3030/api/v1/refresh_token', {
+            method: 'POST',
+            credentials: 'include',
+        })
+            .then(async (res) => {
+                const token = await res.json();
+                setToken(token.accessToken);
+            })
+            .catch((error) => console.error(error));
+    };
+
     const providerValue = {
         login,
         logged,
+        refreshToken,
     };
 
     return (

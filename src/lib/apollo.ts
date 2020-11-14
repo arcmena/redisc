@@ -15,16 +15,14 @@ import { getToken } from '../utils/token';
 let apolloClient: ApolloClient<NormalizedCacheObject> | undefined;
 
 function createIsomorphLink() {
-    const token = getToken();
-
-    console.log(token);
+    console.log(getToken());
 
     const { HttpLink } = require('@apollo/client');
     return new HttpLink({
         uri: 'http://localhost:3030/api/v1/graphql',
         credentials: 'include',
         headers: {
-            Authorization: token ? `Bearer ${token}` : '',
+            Authorization: `Bearer ${getToken()}`,
         },
     });
 }

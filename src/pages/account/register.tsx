@@ -7,7 +7,7 @@ import Router from 'next/router';
 import RegisterForm from '../../components/layouts/partials/RegisterForm';
 
 // Mutations
-import { useRegisterMutation } from '../../types/graphql';
+import { useRegisterMutation } from '../../lib/register.graphql';
 
 // Interfaces
 import { UserFormData } from '../../types/FormTypes';
