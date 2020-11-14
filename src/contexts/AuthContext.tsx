@@ -7,7 +7,7 @@ import { IAuthContext } from '../types/ContextProps';
 import { User } from '../types/EntityTypes';
 
 // GraphQL hooks
-import { useLoginMutation } from '../lib/login.graphql';
+import { useLoginMutation } from '../gql/login.graphql';
 import { refreshToken } from '../utils/api';
 
 export const AuthContext = createContext({} as IAuthContext);

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { useContext } from 'react';
 import Link from 'next/link';
 
-import { useProductsQuery, ProductsDocument } from '../lib/products.graphql';
+import { useProductsQuery } from '../gql/products.graphql';
 
 // Contexts
 import { AuthContext } from '../contexts/AuthContext';
@@ -26,7 +26,7 @@ const Home: React.FC = () => {
                 <ProtectedRoute />
                 {logged && <p>You are Logged!</p>}
                 <div className="products">
-                    {data.products.map((item) => (
+                    {data.productsIndex.map((item) => (
                         <Link
                             as={`/product/${item._id}`}
                             href="/product/[_id]"

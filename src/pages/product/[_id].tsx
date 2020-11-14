@@ -28,7 +28,7 @@ const ProductPage = ({ product }) => {
 export const getStaticPaths: GetStaticPaths = async () => {
     const query = gql`
         {
-            products {
+            productsIndex {
                 _id
                 name
                 description
@@ -38,10 +38,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
             }
         }
     `;
-    const res = await request(
-        'http://localhost:3030/api/v1/graphql',
-        query,
-    ).then(({ products }) => products);
+    const res = await request('http://localhost:3030/graphql', query).then(
+        ({ productsIndex }) => productsIndex,
+    );
 
     return {
         paths: res.map((item) => ({
@@ -55,8 +54,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
     const query = gql`
-        query product($id: String!) {
-            product(id: $id) {
+        query getProduct($_id: String!) {
+            product(_id: $_id) {
                 _id
                 name
                 description
@@ -68,16 +67,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     `;
 
     const variables = {
-        id: params._id,
+        _id: params._id,
     };
 
     const res = await request(
-        'http://localhost:3030/api/v1/graphql',
+        'http://localhost:3030/graphql',
         query,
         variables,
     ).then(({ product }) => product);
-
-    console.log(res);
 
     return {
         props: {

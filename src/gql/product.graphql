@@ -1,5 +1,5 @@
-query Product($id: String!) {
-    product(id: $id) {
+query Product($_id: String!) {
+    product(_id: $_id) {
         _id
         name
         description

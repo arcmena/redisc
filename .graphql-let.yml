@@ -1,7 +1,7 @@
-schema: 'http://localhost:3030/api/v1/graphql'
+schema: 'http://localhost:3030/graphql'
 documents: '**/*.graphql'
 plugins:
-  - typescript
-  - typescript-operations
-  - typescript-react-apollo
+    - typescript
+    - typescript-operations
+    - typescript-react-apollo
 cacheDir: __generated__
