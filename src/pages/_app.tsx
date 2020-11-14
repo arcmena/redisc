@@ -1,9 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
-import { useState, useEffect } from 'react';
-import Head from 'next/head';
-import { AppProps } from 'next/app';
-
-import { ApolloProvider, ApolloClient } from '@apollo/client';
+import App from 'next/app';
+import { ApolloProvider } from '@apollo/react-hooks';
 
 import '../assets/styles/globals.scss';
 
@@ -11,39 +9,28 @@ import '../assets/styles/globals.scss';
 import AuthProvider from '../contexts/AuthContext';
 
 // Components
-import App from '../components/layouts/App';
 import Header from '../components/layouts/Header';
 import Footer from '../components/layouts/Footer';
 
-// Initialize Apollo
-import { useApollo } from '../lib/apollo';
+import withApolloClient from '../lib/withApolloHook';
+import { AppType } from '../types/AppType';
 
-import { refreshToken } from '../utils/api';
+class MyApp extends App<AppType> {
+    render() {
+        const { Component, pageProps, apolloClient } = this.props;
 
-import { getToken } from '../utils/token';
-
-const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
-    const client = useApollo(pageProps.initialApolloState);
-
-    return (
-        <>
-            <Head>
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                />
-            </Head>
-            <ApolloProvider client={client}>
-                <AuthProvider>
-                    <Header />
-                    <App>
+        return (
+            <>
+                <ApolloProvider client={apolloClient}>
+                    <AuthProvider>
+                        <Header />
                         <Component {...pageProps} />
-                    </App>
-                    <Footer />
-                </AuthProvider>
-            </ApolloProvider>
-        </>
-    );
-};
+                        <Footer />
+                    </AuthProvider>
+                </ApolloProvider>
+            </>
+        );
+    }
+}
 
-export default MyApp;
+export default withApolloClient(MyApp);

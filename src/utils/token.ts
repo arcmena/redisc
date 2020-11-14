@@ -1,11 +1,9 @@
-// let cookie;
+let cookie;
 
-// export const setToken = (token: string): void => {
-//     cookie = token;
-// };
+export const setToken = (token: string): void => {
+    cookie = token;
+};
 
-// export const getToken = (): string => {
-//     return cookie;
-// };
-
-export const token = () => {};
+export const getToken = (): string => {
+    return cookie;
+};

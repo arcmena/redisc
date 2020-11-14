@@ -9,7 +9,6 @@ import { useProductsQuery, ProductsDocument } from '../lib/products.graphql';
 import { AuthContext } from '../contexts/AuthContext';
 
 import ProtectedRoute from '../components/layouts/partials/ProtectedRoute';
-import { initializeApollo } from '../lib/apollo';
 
 const Home: React.FC = () => {
     const { logged } = useContext(AuthContext);
@@ -56,20 +55,6 @@ const Home: React.FC = () => {
             </div>
         </>
     );
-};
-
-export const getStaticProps = async () => {
-    const apolloClient = initializeApollo();
-
-    await apolloClient.query({
-        query: ProductsDocument,
-    });
-
-    return {
-        props: {
-            initialApolloState: apolloClient.cache.extract(),
-        },
-    };
 };
 
 export default Home;
