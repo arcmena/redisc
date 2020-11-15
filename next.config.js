@@ -1,6 +1,6 @@
 const withImages = require('next-images');
 
-module.exports = {
+module.exports = withImages({
     webpack(config, options) {
         config.module.rules.push({
             test: /\.graphql$/,
@@ -23,11 +23,9 @@ module.exports = {
             use: 'yaml-loader',
         });
 
-        withImages();
-
         return config;
     },
     env: {
         BACKEND_API_URL: process.env.BACKEND_API_URL,
     },
-};
+});
