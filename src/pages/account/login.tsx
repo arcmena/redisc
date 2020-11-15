@@ -18,8 +18,6 @@ const Login: React.FC = () => {
     const [errorMessage, setErrorMessage] = useState('');
 
     const handleSubmit = async (values: UserFormData) => {
-        console.log(values);
-
         const res = await login(values);
 
         if (typeof res === 'string') return setErrorMessage(res);
