@@ -23,9 +23,9 @@ const ProductPage: React.FC<ProductProps> = ({ product }) => {
                 <div>
                     <h2>{product.name}</h2>
                     <h2>
-                        {product.value.toLocaleString('pt-br', {
+                        {product.value.toLocaleString('en', {
                             style: 'currency',
-                            currency: 'BRL',
+                            currency: 'USD',
                         })}
                     </h2>
                 </div>

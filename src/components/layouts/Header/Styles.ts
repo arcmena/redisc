@@ -15,7 +15,7 @@ export const HeaderComponent = styled.div`
             justify-content: space-between;
             align-items: center;
 
-            padding: 0 1.5rem;
+            padding: 0 2rem;
         }
     }
 
@@ -30,5 +30,7 @@ export const Nav = styled.div`
         &:not(:last-child) {
             padding-right: 1rem;
         }
+
+        color: ${(props) => props.theme.colors.primary_1};
     }
 `;
