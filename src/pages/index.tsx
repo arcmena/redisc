@@ -1,7 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import * as React from 'react';
 import { useContext } from 'react';
-import Link from 'next/link';
 
 // Queries
 import { useProductsQuery } from '../gql/products.graphql';
@@ -35,18 +34,6 @@ const Home: React.FC = () => {
                     <ProductCard key={item._id} product={item} />
                 ))}
             </ProductsContainer>
-
-            <br />
-
-            <Link as="/account/register" href="/account/register">
-                Create an Account
-            </Link>
-
-            <br />
-
-            <Link as="/account/login" href="/account/login">
-                Login
-            </Link>
         </Container>
     );
 };

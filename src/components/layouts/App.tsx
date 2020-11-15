@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 
 import { AuthContext } from '../../contexts/AuthContext';
+import Footer from './Footer/Footer';
+import Header from './Header/Header';
 
 const App: React.FC = ({ children }) => {
     const { validateToken } = useContext(AuthContext);
@@ -9,7 +11,13 @@ const App: React.FC = ({ children }) => {
         validateToken();
     }, []);
 
-    return <main>{children}</main>;
+    return (
+        <>
+            <Header />
+            <main>{children}</main>
+            <Footer />
+        </>
+    );
 };
 
 export default App;

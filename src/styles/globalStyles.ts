@@ -20,7 +20,7 @@ export default createGlobalStyle`
             height: 100%;
 
             main{
-                height: 100%;
+                min-height: calc(100% - 80px);
             }
         }
     }
