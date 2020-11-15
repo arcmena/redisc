@@ -16,6 +16,7 @@
         "@apollo/client": "^3.2.3",
         "@apollo/react-hooks": "^4.0.0",
         "@apollo/react-ssr": "^4.0.0",
+        "@types/styled-components": "^5.1.4",
         "antd": "^4.8.2",
         "apollo-boost": "^0.4.9",
         "apollo-link-context": "^1.0.20",
@@ -31,7 +32,8 @@
         "next-images": "^1.5.0",
         "react": "16.13.1",
         "react-dom": "16.13.1",
-        "sass": "^1.26.11"
+        "sass": "^1.26.11",
+        "styled-components": "^5.2.1"
     },
     "devDependencies": {
         "@graphql-codegen/cli": "1.17.10",

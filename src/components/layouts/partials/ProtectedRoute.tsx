@@ -10,7 +10,6 @@ const ProtectedRoute: React.FC = () => {
     }
 
     if (error) {
-        console.log(error);
         return <div>Error! You are not authorized!</div>;
     }
 
