@@ -1,4 +1,5 @@
 import { Rule } from 'antd/lib/form';
+import { ProductOverview } from './EntityTypes';
 
 export interface InputProps {
     type?: string;
@@ -22,4 +23,8 @@ export interface FormItemProps {
     label?: string;
     name?: string;
     rules?: Rule[];
+}
+
+export interface ProductCardProps {
+    product: ProductOverview;
 }

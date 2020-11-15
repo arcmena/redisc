@@ -17,3 +17,10 @@ export interface Product {
     category: string;
     image: string;
 }
+
+export interface ProductOverview {
+    _id?: string;
+    name?: string;
+    value?: number;
+    image?: string;
+}
