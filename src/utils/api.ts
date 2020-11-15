@@ -12,7 +12,7 @@ const api = Axios.create({
 
 export const refreshToken = async (): Promise<Token> => {
     return await api
-        .post('/refresh_token')
+        .post('/api/v1/refresh_token')
         .then(({ data }) => data)
         .catch((error) => {
             throw new Error(error);

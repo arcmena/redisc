@@ -1,9 +1,16 @@
+/* eslint-disable no-underscore-dangle */
 import * as React from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { request, gql } from 'graphql-request';
 import Link from 'next/link';
 
-const ProductPage = ({ product }) => {
+import { Product } from '../../types/EntityTypes';
+
+interface ProductProps {
+    product: Product;
+}
+
+const ProductPage: React.FC<ProductProps> = ({ product }) => {
     return (
         <div className="product-page">
             <div>
@@ -15,7 +22,12 @@ const ProductPage = ({ product }) => {
                 </div>
                 <div>
                     <h2>{product.name}</h2>
-                    <h2>{product.value}</h2>
+                    <h2>
+                        {product.value.toLocaleString('pt-br', {
+                            style: 'currency',
+                            currency: 'BRL',
+                        })}
+                    </h2>
                 </div>
             </div>
             <div>
@@ -30,17 +42,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
         {
             productsIndex {
                 _id
-                name
-                description
-                value
-                category
-                image
             }
         }
     `;
-    const res = await request('http://localhost:3030/graphql', query).then(
-        ({ productsIndex }) => productsIndex,
-    );
+
+    const res = await request(
+        `${process.env.BACKEND_API_URL}/graphql`,
+        query,
+    ).then(({ productsIndex }) => productsIndex);
 
     return {
         paths: res.map((item) => ({
@@ -71,7 +80,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     };
 
     const res = await request(
-        'http://localhost:3030/graphql',
+        `${process.env.BACKEND_API_URL}/graphql`,
         query,
         variables,
     ).then(({ product }) => product);

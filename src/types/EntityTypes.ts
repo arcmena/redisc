@@ -8,3 +8,12 @@ export interface User {
 export interface IAuth {
     accessToken: string;
 }
+
+export interface Product {
+    _id: string;
+    name: string;
+    description: string;
+    value: number;
+    category: string;
+    image: string;
+}
