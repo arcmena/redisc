@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { ApolloProvider } from '@apollo/react-hooks';
+
 import '../assets/styles/globals.scss';
+import 'antd/dist/antd.css';
 
 // Contexts
 import AuthProvider from '../contexts/AuthContext';
