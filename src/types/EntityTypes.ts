@@ -16,6 +16,7 @@ export interface Product {
     value: number;
     category: string;
     image: string;
+    band: string;
 }
 
 export interface ProductOverview {
@@ -23,4 +24,5 @@ export interface ProductOverview {
     name?: string;
     value?: number;
     image?: string;
+    band?: string;
 }

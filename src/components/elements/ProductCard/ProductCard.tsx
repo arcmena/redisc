@@ -11,7 +11,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => (
         <Card hoverable cover={<img src={product.image} alt="Product" />}>
             <div>
                 <h3>{product.name}</h3>
-                <span>Tyler the Creator</span>
+                <span>{product.band ? product.band : 'Not specified'}</span>
                 <h4>
                     {product.value.toLocaleString('en', {
                         style: 'currency',

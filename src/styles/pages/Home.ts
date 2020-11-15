@@ -7,8 +7,9 @@ export const Container = styled.div`
 export const ProductsContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 
-    .ant-card:not(:first-child) {
-        margin-left: 10px;
+    .ant-card {
+        margin: 10px;
     }
 `;

@@ -4,5 +4,6 @@ query Products {
         name
         value
         image
+        band
     }
 }

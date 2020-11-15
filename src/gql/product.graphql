@@ -6,5 +6,6 @@ query Product($_id: String!) {
         value
         category
         image
+        band
     }
 }
