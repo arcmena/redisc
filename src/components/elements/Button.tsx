@@ -1,15 +1,19 @@
 import * as React from 'react';
+import { Button as Component } from 'antd';
 
 // Interface
 import { ButtonProps } from '../../types/ElementProps';
 
-const Button: React.FC<ButtonProps> = ({ type, children }) => {
-    const btntype = type === 'submit' ? type : 'button';
-
+const Button: React.FC<ButtonProps> = ({
+    children,
+    type,
+    loading,
+    btnRole,
+}) => {
     return (
-        <>
-            <button type={btntype}>{children}</button>
-        </>
+        <Component type={type} loading={loading} htmlType={btnRole}>
+            {children}
+        </Component>
     );
 };
 
