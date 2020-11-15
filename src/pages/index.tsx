@@ -13,7 +13,11 @@ import ProtectedRoute from '../components/layouts/partials/ProtectedRoute';
 import ProductCard from '../components/elements/ProductCard/ProductCard';
 
 // Styles
-import { Container, ProductsContainer } from '../styles/pages/Home';
+import {
+    Container,
+    SidebarContainer,
+    ProductsContainer,
+} from '../styles/pages/Home';
 
 const Home: React.FC = () => {
     const { logged } = useContext(AuthContext);
@@ -27,8 +31,13 @@ const Home: React.FC = () => {
 
     return (
         <Container>
-            <ProtectedRoute />
-            {logged && <p>You are Logged!</p>}
+            {/* <ProtectedRoute />
+            {logged && <p>You are Logged!</p>} */}
+            <SidebarContainer>
+                <div>
+                    <h3>All categories</h3>
+                </div>
+            </SidebarContainer>
             <ProductsContainer>
                 {data.productsIndex.map((item) => (
                     <ProductCard key={item._id} product={item} />
