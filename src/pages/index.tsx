@@ -3,12 +3,18 @@ import * as React from 'react';
 import { useContext } from 'react';
 import Link from 'next/link';
 
+// Queries
 import { useProductsQuery } from '../gql/products.graphql';
 
 // Contexts
 import { AuthContext } from '../contexts/AuthContext';
 
+// Components
 import ProtectedRoute from '../components/layouts/partials/ProtectedRoute';
+import ProductCard from '../components/elements/ProductCard/ProductCard';
+
+// Styles
+import { Container, ProductsContainer } from '../styles/pages/Home';
 
 const Home: React.FC = () => {
     const { logged } = useContext(AuthContext);
@@ -21,39 +27,27 @@ const Home: React.FC = () => {
     }
 
     return (
-        <>
-            <div>
-                <ProtectedRoute />
-                {logged && <p>You are Logged!</p>}
-                <div className="products">
-                    {data.productsIndex.map((item) => (
-                        <Link
-                            as={`/product/${item._id}`}
-                            href="/product/[_id]"
-                            key={item._id}
-                        >
-                            <div className="product">
-                                <img src={item.image} alt="item" />
-                                <h4>{item.name}</h4>
-                                <span>R$: {item.value}</span>
-                            </div>
-                        </Link>
-                    ))}
-                </div>
+        <Container>
+            <ProtectedRoute />
+            {logged && <p>You are Logged!</p>}
+            <ProductsContainer>
+                {data.productsIndex.map((item) => (
+                    <ProductCard key={item._id} product={item} />
+                ))}
+            </ProductsContainer>
 
-                <br />
+            <br />
 
-                <Link as="/account/register" href="/account/register">
-                    Create an Account
-                </Link>
+            <Link as="/account/register" href="/account/register">
+                Create an Account
+            </Link>
 
-                <br />
+            <br />
 
-                <Link as="/account/login" href="/account/login">
-                    Login
-                </Link>
-            </div>
-        </>
+            <Link as="/account/login" href="/account/login">
+                Login
+            </Link>
+        </Container>
     );
 };
 
