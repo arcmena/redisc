@@ -15,22 +15,12 @@ import { AuthContext } from '../../contexts/AuthContext';
 const Login: React.FC = () => {
     const { login } = useContext(AuthContext);
 
-    const [data, setData] = useState<UserFormData>({
-        email: '',
-        password: '',
-    });
-
     const [errorMessage, setErrorMessage] = useState('');
 
-    const handleChange = (e: React.ChangeEvent<HTMLFormElement>) => {
-        const { name, value } = e.target;
-        setData({ ...data, [name]: value });
-    };
+    const handleSubmit = async (values: UserFormData) => {
+        console.log(values);
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-
-        const res = await login(data);
+        const res = await login(values);
 
         if (typeof res === 'string') return setErrorMessage(res);
 
@@ -44,7 +34,7 @@ const Login: React.FC = () => {
                 Back
             </Link>
             <div>
-                <LoginForm onChange={handleChange} onSubmit={handleSubmit} />
+                <LoginForm onFinish={handleSubmit} />
                 {errorMessage && <p>{errorMessage}</p>}
             </div>
         </div>

@@ -2,10 +2,10 @@
     "editor.formatOnSave": true,
     "files.exclude": {
         // Files
-        ".eslintrc": true,
-        ".eslintignore": true,
-        ".prettierrc": true,
-        ".prettierignore": true,
+        // ".eslintrc": true,
+        // ".eslintignore": true,
+        // ".prettierrc": true,
+        // ".prettierignore": true,
         ".huskyrc": true,
         "tsconfig.json": true,
         "codegen.yml": true,

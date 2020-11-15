@@ -12,6 +12,7 @@
         "test": "yarn codegen && jest"
     },
     "dependencies": {
+        "@ant-design/icons": "^4.3.0",
         "@apollo/client": "^3.2.3",
         "@apollo/react-hooks": "^4.0.0",
         "@apollo/react-ssr": "^4.0.0",
