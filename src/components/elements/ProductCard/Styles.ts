@@ -1,29 +1,55 @@
 import styled from 'styled-components';
 
-import { Card as CardComponent } from 'antd';
-import { CardProps, CardMetaProps } from 'antd/lib/card';
+export const Container = styled.a`
+    position: relative;
+    max-height: 100%;
+    width: 100%;
+`;
 
-export const Card: React.FC<CardProps> = styled(CardComponent)`
-    width: 250px;
+export const CardInfo = styled.div`
+    position: absolute;
+    top: 0;
+    right: 0;
 
-    .ant-card-body {
-        padding: 1rem;
-        text-align: center;
+    width: 100%;
 
+    z-index: 3;
+
+    div {
         h3 {
-            margin: 0;
+            padding-top: 1rem;
+
+            span {
+                letter-spacing: 0.4px;
+                line-height: 2.2;
+            }
         }
 
         span {
-            color: ${(props) => props.theme.colors.gray};
+            padding: 2rem 2.5rem;
+            background: ${({ theme }) => theme.colors.white};
+
+            font-weight: 600;
         }
 
-        h4 {
-            color: ${(props) => props.theme.colors.primary_1};
-            font-weight: 500;
-            margin: 0;
+        > span {
+            font-size: 1.6rem;
+            line-height: 1.5rem;
         }
     }
 `;
 
-export const CardMeta: React.FC<CardMetaProps> = styled(CardComponent.Meta)``;
+export const CardImage = styled.div`
+    display: block;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    margin: 0px;
+
+    width: 100%;
+
+    img {
+        width: 100%;
+        max-width: 100%;
+    }
+`;
