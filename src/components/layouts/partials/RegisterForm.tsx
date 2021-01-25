@@ -10,10 +10,10 @@ import { BasicFormProps } from '../../../types/LayoutProps';
 const RegisterForm: React.FC<BasicFormProps> = ({ onChange, onSubmit }) => {
     return (
         <form onChange={onChange} onSubmit={onSubmit} className="form">
-            <Input label="Name" type="text" name="name" />
-            <Input label="Email" type="email" name="email" />
-            <Input label="Password" type="password" name="password" />
-            <Button type="submit">Submit</Button>
+            <Input type="text" name="name" />
+            <Input type="email" name="email" />
+            <Input type="password" name="password" />
+            <Button btnRole="submit">Submit</Button>
         </form>
     );
 };
