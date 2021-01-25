@@ -49,6 +49,7 @@ class MyDocument extends Document {
                     <meta charSet="utf-8" />
                     <meta name="theme-color" content="#000000" />
                     <link rel="icon" href="favicon.ico" />
+                    <title>Redisc | We the best music!</title>
                 </Head>
                 <body>
                     <Main />
