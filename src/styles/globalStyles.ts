@@ -15,6 +15,7 @@ export default createGlobalStyle`
         background: ${(props) => props.theme.colors.background};
         color: ${(props) => props.theme.colors.black};
         font: 400 16px Roboto, sans-serif;
+        color: #2D2E30;
 
         > div {
             height: 100%;
@@ -22,6 +23,15 @@ export default createGlobalStyle`
             main{
                 min-height: calc(100% - 160px);
             }
+        }
+
+        ol, ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #2D2E30;
         }
     }
 `;
