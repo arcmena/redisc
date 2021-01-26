@@ -11,6 +11,7 @@ const api = Axios.create({
 });
 
 export const refreshToken = async (): Promise<Token> => {
+    console.log(process.env.BACKEND_API_URL);
     return await api
         .post('/api/v1/refresh_token')
         .then(({ data }) => data)

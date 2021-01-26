@@ -19,7 +19,7 @@ function create(initialState, { fetchOptions }) {
         uri:
             process.env.NODE_ENV === 'production'
                 ? process.env.BACKEND_URI
-                : 'http://localhost:3030/graphql',
+                : 'http://64.227.24.86:3030/graphql',
         credentials: 'include',
         fetchOptions,
     });

@@ -1,4 +1,4 @@
-schema: 'http://localhost:3030/graphql'
+schema: 'http://64.227.24.86:3030/graphql'
 documents: '**/*.graphql'
 plugins:
     - typescript

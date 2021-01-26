@@ -38,3 +38,7 @@ yarn-error.log*
 __generated__
 *.graphql.d.ts
 *.graphqls.d.ts
+
+.graphql-let.yml
+
+/src/lib/init-apollo.ts

@@ -1,11 +1,5 @@
 import styled from 'styled-components';
 
-export const Container = styled.a`
-    position: relative;
-    max-height: 100%;
-    width: 100%;
-`;
-
 export const CardInfo = styled.div`
     position: absolute;
     top: 0;
@@ -17,7 +11,7 @@ export const CardInfo = styled.div`
 
     div {
         h3 {
-            padding-top: 1rem;
+            padding-top: 1.1rem;
 
             span {
                 letter-spacing: 0.4px;
@@ -25,16 +19,11 @@ export const CardInfo = styled.div`
             }
         }
 
-        span {
-            padding: 2rem 2.5rem;
-            background: ${({ theme }) => theme.colors.white};
-
-            font-weight: 600;
-        }
-
         > span {
             font-size: 1.6rem;
             line-height: 1.5rem;
+
+            display: inline-block;
         }
     }
 `;
@@ -51,5 +40,36 @@ export const CardImage = styled.div`
     img {
         width: 100%;
         max-width: 100%;
+    }
+`;
+
+export const CardBand = styled.div`
+    position: absolute;
+    z-index: 3;
+
+    right: 0;
+
+    h4 {
+        margin-top: -3.9rem;
+    }
+`;
+
+export const Container = styled.a`
+    position: relative;
+    max-height: 100%;
+    width: 100%;
+
+    transition: all 1s ease-in;
+
+    span {
+        padding: 2rem 2.5rem;
+        background: ${({ theme }) => theme.colors.white};
+
+        font-weight: 600;
+    }
+
+    &:hover span {
+        background: black;
+        color: ${({ theme }) => theme.colors.white};
     }
 `;
