@@ -1,9 +1,12 @@
 import { Product } from '../../../types/EntityTypes';
+import Button from '../../ui/Button';
 
 import {
     Container,
     ProductViewRoot,
     ProductDisplay,
+    ProductName,
+    Image,
     ProductInfo,
 } from './styles';
 
@@ -18,22 +21,32 @@ const ProductView: React.FC<ProductProps> = ({
         <Container>
             <ProductViewRoot>
                 <ProductDisplay>
-                    <div>
-                        <h1>{name}</h1>
+                    <ProductName>
+                        <h1>
+                            <span>{name}</span>
+                        </h1>
                         <h2>
-                            {value.toLocaleString('en', {
-                                style: 'currency',
-                                currency: 'USD',
-                            })}
+                            <span>
+                                {value.toLocaleString('en', {
+                                    style: 'currency',
+                                    currency: 'USD',
+                                })}{' '}
+                                USD
+                            </span>
                         </h2>
-                    </div>
-                    <div>
+                    </ProductName>
+                    <Image>
                         <img src={image} alt="cover" />
-                    </div>
+                    </Image>
                 </ProductDisplay>
                 <ProductInfo>
-                    <h2>{band}</h2>
-                    <p>{description}</p>
+                    <section>
+                        <h2>{band}</h2>
+                        <p>{description}</p>
+                    </section>
+                    <div>
+                        <Button>Add to cart</Button>
+                    </div>
                 </ProductInfo>
             </ProductViewRoot>
         </Container>

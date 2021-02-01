@@ -42,3 +42,5 @@ __generated__
 .graphql-let.yml
 
 /src/lib/init-apollo.ts
+
+.vscode

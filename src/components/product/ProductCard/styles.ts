@@ -11,7 +11,7 @@ export const CardInfo = styled.div`
 
     div {
         h3 {
-            padding: 1.1rem 0;
+            padding: 1rem 0;
 
             span {
                 letter-spacing: 0.4px;
