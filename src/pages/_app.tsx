@@ -3,8 +3,6 @@ import React from 'react';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { ThemeProvider } from 'styled-components';
 
-import 'antd/dist/antd.css';
-
 import GlobalStyle from '../styles/globalStyles';
 import theme from '../styles/theme';
 

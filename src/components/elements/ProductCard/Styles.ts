@@ -11,7 +11,7 @@ export const CardInfo = styled.div`
 
     div {
         h3 {
-            padding-top: 1.1rem;
+            padding: 1.1rem 0;
 
             span {
                 letter-spacing: 0.4px;
@@ -50,7 +50,7 @@ export const CardBand = styled.div`
     right: 0;
 
     h4 {
-        margin-top: -3.9rem;
+        margin-top: -4.3rem;
     }
 `;
 
