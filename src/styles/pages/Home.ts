@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+interface SidebarProp {
+    order: number;
+}
+
 export const Container = styled.div`
     height: 100%;
 
@@ -9,9 +13,13 @@ export const Container = styled.div`
     grid-template-columns: repeat(12, minmax(0, 1fr));
     grid-gap: 1rem;
     gap: 1rem;
+
+    @media (max-width: 1024px) {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
 `;
 
-export const Sidebar = styled.div`
+export const Sidebar = styled('div')<SidebarProp>`
     grid-column: span 2 / span 2;
 
     letter-spacing: 0.04em;
@@ -28,6 +36,10 @@ export const Sidebar = styled.div`
 
         padding: 0.7rem 1rem;
     }
+
+    @media (max-width: 1024px) {
+        order: ${({ order }) => order};
+    }
 `;
 
 export const ProductsContainer = styled.div`
@@ -42,5 +54,14 @@ export const ProductsContainer = styled.div`
 
     a {
         min-height: 300px;
+    }
+
+    @media (max-width: 1024px) {
+        grid-column: span 1 / span 1;
+        order: 3;
+    }
+
+    @media (max-width: 768px) {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
     }
 `;

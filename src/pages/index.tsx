@@ -35,7 +35,7 @@ const Home: React.FC = () => {
             <Container>
                 {/* <ProtectedRoute />
             {logged && <p>You are Logged!</p>} */}
-                <Sidebar>
+                <Sidebar order={1}>
                     <h3>
                         <a href="#">All categories</a>
                     </h3>
@@ -62,7 +62,7 @@ const Home: React.FC = () => {
                         <ProductCard key={item._id} product={item} />
                     ))}
                 </ProductsContainer>
-                <Sidebar>
+                <Sidebar order={2}>
                     <h3>
                         <a href="#">Relevance</a>
                     </h3>
