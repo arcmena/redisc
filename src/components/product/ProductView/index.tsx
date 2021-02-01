@@ -1,3 +1,5 @@
+import { NextSeo } from 'next-seo';
+
 import { Product } from '../../../types/EntityTypes';
 import Button from '../../ui/Button';
 
@@ -19,6 +21,23 @@ const ProductView: React.FC<ProductProps> = ({
 }) => {
     return (
         <Container>
+            <NextSeo
+                title={name}
+                description={description}
+                openGraph={{
+                    type: 'website',
+                    title: name,
+                    description,
+                    images: [
+                        {
+                            url: image,
+                            width: 800,
+                            height: 600,
+                            alt: name,
+                        },
+                    ],
+                }}
+            />
             <ProductViewRoot>
                 <ProductDisplay>
                     <ProductName>
