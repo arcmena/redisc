@@ -1,7 +1,4 @@
-/* eslint-disable no-underscore-dangle */
-import React from 'react';
-
-import { Container, CardInfo, CardImage, CardBand } from './Styles';
+import { Container, CardInfo, CardImage, CardBand } from './styles';
 
 import { ProductCardProps } from '../../../types/ElementProps';
 

@@ -12,7 +12,7 @@ import { AuthContext } from '../contexts/AuthContext';
 
 // Components
 import ProtectedRoute from '../components/layouts/partials/ProtectedRoute';
-import ProductCard from '../components/elements/ProductCard/ProductCard';
+import ProductCard from '../components/product/ProductCard';
 
 // Styles
 import { Container, Sidebar, ProductsContainer } from '../styles/pages/Home';

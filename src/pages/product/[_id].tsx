@@ -2,39 +2,17 @@
 import * as React from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { request, gql } from 'graphql-request';
-import Link from 'next/link';
 
 import { Product } from '../../types/EntityTypes';
+
+import ProductView from '../../components/product/ProductView';
 
 interface ProductProps {
     product: Product;
 }
 
 const ProductPage: React.FC<ProductProps> = ({ product }) => {
-    return (
-        <div className="product-page">
-            <div>
-                <Link as="/" href="/">
-                    Back
-                </Link>
-                <div>
-                    <img src={product.image} alt="cover" />
-                </div>
-                <div>
-                    <h2>{product.name}</h2>
-                    <h2>
-                        {product.value.toLocaleString('en', {
-                            style: 'currency',
-                            currency: 'USD',
-                        })}
-                    </h2>
-                </div>
-            </div>
-            <div>
-                <h1>{product.description}</h1>
-            </div>
-        </div>
-    );
+    return <ProductView product={product} />;
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -52,7 +30,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     ).then(({ productsIndex }) => productsIndex);
 
     return {
-        paths: res.map((item) => ({
+        paths: res.map((item: Product) => ({
             params: {
                 _id: item._id,
             },
@@ -71,6 +49,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
                 value
                 category
                 image
+                band
             }
         }
     `;
